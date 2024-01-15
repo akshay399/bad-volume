@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div class="demo-container">
+      <div>Volume: <span id="vol-num">50</span></div>
+      <div id="vol-range-container">
+        <input type="range" disabled min="0" max="1000" value="500" />
+      </div>
+    </div> -->
+    <div class="demo-container">
+      <div>Volume: <span id="vol-num">50</span></div>
+      <div id="vol-range-container">
+        <input type="range" disabled min="0" max="1000" value="500" />
+      </div>
+    </div>
+    <audio
+      src="https://www.bensound.com/bensound-music/bensound-tombeaudevivaldi.mp3"
+      loop
+      id="audio-player"
+    ></audio>
+    <p>
+      <button id="play-music">Play</button>
+    </p>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+body {
+  display: grid;
+  place-items: center;
+}
+.center {
+  display: grid;
+  place-items: center;
+}
+
+#vol-range-container {
+  margin-top: 100px;
+  display: inline-block;
+  background-color: white;
+  border: 2px solid black;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 25px;
+}
+
+.demo-container {
+  margin-top: 100px;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+}
+
+#vol-num {
+  margin-top: 100px;
+  display: inline-block;
+  width: 30px;
+}
