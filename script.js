@@ -16,23 +16,44 @@ const volRangeHalfway = volRangeBounding.x + volRangeBounding.width / 2;
 volRangeContainer.addEventListener("mousedown", () => {
   document.onmousemove = trackMouseMovement;
 });
+volRangeContainer.addEventListener("touchstart", () => {
+  document.ontouchmove = trackTouchMovement;
+});
 
 document.addEventListener("mouseup", clearMouseData);
 
 function clearMouseData() {
   document.onmousemove = null;
+  document.ontouchmove = null;
   initialPosition = null;
   volRangeContainer.style.transform = null;
   clearInterval(intervalId);
 }
 
 function trackMouseMovement(evt) {
-  if (!initialPosition) initialPosition = evt.clientY;
-  const upOrDown = evt.clientX >= volRangeHalfway ? 1 : -1;
+  //   if (!initialPosition) initialPosition = evt.clientY;
+  //   const upOrDown = evt.clientX >= volRangeHalfway ? 1 : -1;
+  //   volRangeContainer.style.transform = `rotate(${
+  //     (evt.clientY - initialPosition) * upOrDown
+  //   }deg)`;
+  //   const decimalChange = (evt.clientY - initialPosition) / initialPosition;
+  //   changeVolume(changeByCalculator(decimalChange * upOrDown));
+  trackMovement(evt.clientY, evt.clientX);
+}
+function trackTouchMovement(evt) {
+  // Prevent default behavior to avoid scrolling on touch devices
+  evt.preventDefault();
+  const touch = evt.touches[0];
+  trackMovement(touch.clientY, touch.clientX);
+}
+
+function trackMovement(clientY, clientX) {
+  if (!initialPosition) initialPosition = clientY;
+  const upOrDown = clientX >= volRangeHalfway ? 1 : -1;
   volRangeContainer.style.transform = `rotate(${
-    (evt.clientY - initialPosition) * upOrDown
+    (clientY - initialPosition) * upOrDown
   }deg)`;
-  const decimalChange = (evt.clientY - initialPosition) / initialPosition;
+  const decimalChange = (clientY - initialPosition) / initialPosition;
   changeVolume(changeByCalculator(decimalChange * upOrDown));
 }
 
